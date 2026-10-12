@@ -64,7 +64,8 @@ c. Publish (standing approval above). If Business Suite shows a login page, do N
    under kingsmello578-del/unhired/main/reels/>">; it fetches the mp4 and postMessages {kind:"unhired-bridge", id, blob} to
    https://business.facebook.com. Wrap the blob as File(name.mp4, video/mp4). Patch HTMLInputElement.prototype.click so a file
    input's click sets .files via DataTransfer and dispatches BOTH "input" and "change" (bubbling), then click "Add Video" with a real
-   click. Type the caption, press Escape (hashtag popup), Next → Next → Share now (or Schedule with a time). Then mark the reel posted.
+   click. Set the caption WITHOUT the computer type action (it dropped the Mac bridge twice): focus the wide [contenteditable=true]
+   and run document.execCommand('insertText', false, caption). Press Escape (hashtag popup), Next → Next → Share now (or Schedule with a time). Then mark the reel posted.
    Do NOT use MediaRecorder: the pane is usually hidden and records 0 bytes.
    Without his reply, leave them `ready`.
 
