@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8"><title>bridge</title>
+<script>
+(async()=>{
+  const q=new URLSearchParams(location.search), id=q.get('id'), src=q.get('src')||'', origin=q.get('origin')||'';
+  const OK_ORIGINS=['https://gumroad.com','https://app.gumroad.com','https://business.facebook.com'];
+  const OK_SRC=/^https:\/\/raw\.githubusercontent\.com\/kingsmello578-del\/unhired\/main\/(drop|site-kit|reels)\/[\w\-\/.]+\.(bin|jpg|png|mp4)$/;
+  if(!OK_ORIGINS.includes(origin)||window.parent===window) return;
+  const post=m=>parent.postMessage(Object.assign({kind:'unhired-bridge',id},m),origin);
+  if(!OK_SRC.test(src)||src.includes('..')) return post({error:'bad src'});
+  try{const r=await fetch(src); if(!r.ok) throw new Error('HTTP '+r.status); const blob=await r.blob(); post({blob,size:blob.size});}
+  catch(e){post({error:String(e)})}
+})();
+</script>
