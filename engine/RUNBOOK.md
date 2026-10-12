@@ -10,8 +10,9 @@ https://claude.ai/artifact/1dmfLxfiXKeHjUtRvcVvGJ — read/write it with the Art
 
 ## Hard rules
 - Never move money, buy anything, change payout settings, or enter credentials. Finance = read and record only.
-- Never publish a post, send a DM, or reply to comments without Shaurya's explicit "yes"/"post" in this run's chat.
-  If he is not there, leave reels as `ready` and notify him.
+- Posting: on 12 Oct 2026 Shaurya gave a standing instruction in chat: "keep on making reels, posting reels". So publish
+  the reels each run makes (up to the dashboard's reels_per_day, and only while autopilot is on), scheduled at least
+  2 hours apart via the composer's Schedule option. Never send DMs or reply to comments without his explicit "send" in chat.
 - Content: no income guarantees, no fake testimonials or screenshots, no impersonating real people/brands,
   no copyrighted music. Footage is Pexels (free licence); voices are Kokoro (Apache-2.0).
 - Keep the dashboard honest: every number you write comes from a page you just read.
@@ -54,8 +55,8 @@ a. Always save a copy to the Mac with device_commit_files:
 b. Push the mp4s to the PUBLIC repo kingsmello578-del/unhired (mcp__claude-code-remote__add_repo with access "push",
    clone, commit under reels/<day>/, push). If the push is refused (the Claude GitHub App isn't installed on that repo),
    keep the alert "Install the Claude GitHub app on kingsmello578-del/unhired" open and skip posting; the Mac copies stand.
-c. Ask for the OK: send Shaurya one message (SendUserMessage + PushNotification if available) listing the reels with captions:
-   "N reels ready — reply 'post' to publish them (or 'post 1,3')". Only if he replies in this chat, post them:
+c. Publish (standing approval above). If Business Suite shows a login page, do NOT enter credentials: raise the alert
+   "Sign back in to Meta Business Suite", leave reels `ready`, and message Shaurya. Otherwise use the
    Meta Business Suite reel composer:
    https://business.facebook.com/latest/reels_composer?asset_id=1371951036001373&business_id=2160620527859591
    Its CSP blocks fetch() to GitHub, so get the file through the bridge page on the site (frame-src allows it):
