@@ -1,9 +1,11 @@
 # Unhired autopilot — runbook
 
 You are running one scheduled pass of the Unhired autopilot for Shaurya (Dubai, UTC+4).
-Business: faceless Instagram reels (@unhiredofficial1) about AI tools and side hustles →
-free prompts page https://unhired-inky.vercel.app/free → $19 "Unhired Prompt Vault" on
-Gumroad https://kingsmello.gumroad.com/l/prompt-vault. Budget: $0. Never spend money.
+Business (since 13 Oct 2026): faceless Instagram reels (@unhiredofficial1) for social media managers and small
+content agencies → sales page https://unhired-inky.vercel.app/kit (bio link) → "The Content Ops Kit" on Gumroad:
+$49 https://kingsmello.gumroad.com/l/content-ops-kit and $99 Deluxe https://kingsmello.gumroad.com/l/content-ops-kit-deluxe.
+Topics come from the kit's 12 SOPs (onboarding, calendars, scripting, repurposing, captions, briefs, QA/approvals,
+publishing, community, reporting, hiring, AI policy, retainer pricing). Budget: $0. Never spend money.
 
 Dashboard (the source of truth, and what Shaurya watches):
 https://claude.ai/artifact/1dmfLxfiXKeHjUtRvcVvGJ — read/write it with the ArtifactData tool.
@@ -37,17 +39,23 @@ Read the `reels` collection first and never repeat a hook or topic from the last
   optional `ktts` (pronunciation, e.g. "Chat G P T"), `stage`, `cam` ("snap" | "push" | "whip"), `sfx` ("whoosh"|"pop"|"cash"|"scratch"), `broll` (1–10).
 - Stage cards: `{"type":"talk"}` (full-screen footage), `{"type":"chat","title","prompt","typing","reply":[..]}`,
   `{"type":"list","title","items":[..],"show":n,"from":k}`, `{"type":"calc","title","rows":[[label,value,"neg|pos|"]]}`,
-  `{"type":"comment","word":"PLAN"}`, `{"type":"cover"}`.
-- First line = hook in under 2.5 s. Give one concrete, usable prompt or tactic. End with the CTA:
-  "Comment PLAN and I'll send you the free prompts" + `tail_stage {"type":"comment","word":"PLAN"}`.
+  `{"type":"comment","word":"PLAN"}`, `{"type":"cover"}` (Content Ops Kit end card; optional title/sub/price/cta).
+- First line = hook in under 2.5 s. Give one concrete, usable SOP step, prompt or tactic from the kit. End with the CTA:
+  "… is in the Content Ops Kit. Link in bio." + `"tail":2.6` and `tail_stage {"type":"cover"}`.
+  Never invent results, client stories or income numbers; label example figures as examples.
+  Write "S O P", "Q A" etc. in `ktts` so the voice spells them.
 - Vary `broll` clips so consecutive lines use different numbers; clips 01–10 are real people at laptops/phones/desks.
 
 ## 3. Render
 `./render.sh scripts/<day>/<file>.json out/<day>/<file>.mp4` per reel (~2 min per 10 s of video on 2 CPUs).
 Check each: ffprobe 1080x1920, h264+aac, 25–60 s; grab one frame and look at it. Re-render once on failure, else mark `failed`.
+AUDIO: render.sh maps the voice track explicitly (-map 1:a) and mixes the original music bed public/music/bed.wav
+(made by tools/make_bed.py, no samples, royalty-free), ducked under the voice. It deletes the output and exits 3 if the
+audio peak is below -30 dB. Never post a reel without checking max_volume is around -5 dB. (The 12 Oct reels went out
+silent because Remotion's silent.mp4 has its own silent audio track and ffmpeg picked it.)
 Write each to the dashboard as `reels/<day>-<slot>-<k>`:
 `{created_at, title, hook, topic, duration, status:"ready", caption, script_file}`.
-Caption: 1–2 lines + "Comment PLAN for the free prompts 👇" + 5–8 relevant hashtags.
+Caption: 1–2 lines + "… → link in bio" + 5–8 relevant hashtags (#socialmediamanager #agencyowner #smma …).
 
 ## 4. Deliver
 a. Always save a copy to the Mac with device_commit_files:
