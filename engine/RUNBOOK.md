@@ -76,6 +76,12 @@ c. Publish (standing approval above). If Business Suite shows a login page, do N
    and scrambles text. Take a screenshot, left_click the "Describe your reel" box, then use computer `type` in SHORT chunks (one per
    caption line, separated by key "shift+Enter"), then key Escape (hashtag popup). Verify the editor's innerText in JS before sharing.
    Wait for "safe to publish", then Next → Next → Share now (or Schedule with a time). Then mark the reel posted.
+   SCHEDULING (tested 13 Oct 2026): after the two Next clicks, the Share step has "Scheduling options: Share now | Schedule |
+Save as draft". Click "Schedule" (find → ref), then set the time: find the spinbutton "hours" (ref), left_click it and press
+ArrowUp/ArrowDown to change the hour (typing digits does NOT work); same for "minutes" and "meridiem". The date field is
+"mm/dd/yyyy". Zoom on the date/time row to verify, then click the last "Schedule" button. Success = redirect to
+/latest/posts/scheduled_posts listing the time. Prefer scheduling a whole run's reels 2–3 h apart in one session, so
+posting doesn't depend on the Mac staying awake.
    Do NOT use MediaRecorder: the pane is usually hidden and records 0 bytes.
    Without his reply, leave them `ready`.
 
